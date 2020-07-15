@@ -25,13 +25,16 @@ export default class Survey extends Component {
     const { token } = this.props.match.params;
     try {
       //Agarro los datos del token desde la API.
-      const res = await axios.get(`https://api.axontraining.com/surveys`, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
+      const res = await axios.get(
+        `https://api.axontraining.com/master/surveys`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
       const res_options = await axios.get(
-        `https://api.axontraining.com/surveys/opciones`
+        `https://api.axontraining.com/master/surveys/opciones`
       );
 
       //Acá manejo si ya hizo el primer paso antes
@@ -79,7 +82,7 @@ export default class Survey extends Component {
         message: "",
       };
       axios
-        .post("https://api.axontraining.com/surveys", data, {
+        .post("https://api.axontraining.com/master/surveys", data, {
           headers: {
             Authorization: "Bearer " + token,
           },
@@ -108,7 +111,7 @@ export default class Survey extends Component {
       message,
     };
     axios
-      .post("https://api.axontraining.com/surveys", data, {
+      .post("https://api.axontraining.com/master/surveys", data, {
         headers: {
           Authorization: "Bearer " + token,
         },
